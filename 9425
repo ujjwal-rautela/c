@@ -1,0 +1,40 @@
+Program to draw circle using Mid-point Circle generation algorithm.
+
+#include<stdio.h>
+#include<graphics.h>
+int main()
+{
+	int xc,yc,r,p,x,y;
+	int gd=DETECT,gm;
+	initgraph(&gd,&gm,NULL);
+	printf("Enter the co-ordinates of center : \n");
+	scanf("%d%d",&xc,&yc);
+	printf("\nEnter the radius: \n");
+	scanf("%d",&r);
+	x = 0;
+	y = r;
+	p=1-r;
+while(x<=y)
+	{
+		putpixel(xc+x,yc+y,WHITE);
+		putpixel(xc-x,yc-y,WHITE);
+		putpixel(xc+x,yc-y,RED);
+		putpixel(xc-x,yc+y,RED);
+		putpixel(xc+y,yc+x,YELLOW);
+		putpixel(xc-y,yc-x,YELLOW);
+		putpixel(xc+y,yc-x,GREEN);
+		putpixel(xc-y,yc+x,GREEN);
+		if(p<0)
+		{
+			p = p+(2*x)+3;
+		}
+		else
+		{
+			p=p+(2*(x-y))+5;
+			y=y-1;
+		}
+		x=x+1;
+}
+	getch();
+	closegraph();
+}
