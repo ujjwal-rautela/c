@@ -1,0 +1,43 @@
+PROBLEM STATEMENT: Write a program to draw a line using Bresenham’s line generation algorithm.
+Objective: This lab exercise implements the line drawing algorithm using decision parameter and pixel values.
+Source Code:-
+ #include<stdio.h>
+ #include<graphics.h>
+ int main( )
+ {
+ int gd=DETECT, gm, x0, y0, x1, y1, dx, dy, p, x, y;
+ printf("Co-ordinates of first point: ");
+ printf("\nEnter the value of x1: ");
+ scanf("%d",&x0);
+ printf("Enter the value of y1: ");
+ scanf("%d",&y0);
+ printf("Co-ordinates of second point: ");
+ printf("\nEnter the value of x2: ");
+ scanf("%d",&x1);
+ printf("Enter the value of y2: ");
+ scanf("%d",&y1);
+ initgraph(&gd,&gm,"");
+ dx=x1-x0;
+ dy=y1-y0;
+ x=x0;
+ y=y0;
+ 
+p=2*dy-dx;
+ while(x<x1)
+ {
+ if(p>=0)
+ {
+ putpixel(x,y,4);
+ y=y+1;
+ p=p+2*dy-2*dx;
+ }
+ else
+ {
+ putpixel(x,y,4);
+ p=p+2*dy;
+ }
+ x=x+1;
+ }
+ getch();
+ return 0;
+ }
